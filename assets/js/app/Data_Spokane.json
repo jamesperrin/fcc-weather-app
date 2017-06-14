@@ -1,0 +1,41 @@
+{
+    "coord": {
+        "lon": -117.24,
+        "lat": 47.67
+    },
+    "weather": [{
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+    }],
+    "base": "stations",
+    "main": {
+        "temp": 55.98,
+        "pressure": 1011,
+        "humidity": 41,
+        "temp_min": 53.6,
+        "temp_max": 60.8
+    },
+    "visibility": 16093,
+    "wind": {
+        "speed": 13.87,
+        "deg": 240,
+        "gust": 8.2
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1497030780,
+    "sys": {
+        "type": 1,
+        "id": 2956,
+        "message": 0.0053,
+        "country": "US",
+        "sunrise": 1497009062,
+        "sunset": 1497066371
+    },
+    "id": 5811729,
+    "name": "Spokane Valley",
+    "cod": 200
+}

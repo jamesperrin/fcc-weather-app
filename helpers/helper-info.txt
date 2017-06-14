@@ -1,0 +1,158 @@
+WEATHER APP
+
+Our weather API is simple, clear and free. We also offer higher levels of support, please see our paid plan options.
+
+To access the API you need to sign up for an API key if you are on a free or paid plan.
+
+http://api.openweathermap.org
+
+freegeoip.net provides a public HTTP API for software developers to search the geolocation of IP addresses. It uses a database of IP addresses that are associated to cities along with other relevant information like time zone, latitude and longitude.
+http://freegeoip.net
+
+Use either:
+
+http://freegeoip.net/json/387
+
+or:
+
+http://ip-api.com/json323
+
+http://freegeoip.net/{format}/{IP_or_hostname}
+
+http://freegeoip.net/json/73.83.214.123
+
+====================================================================
+Create <div> and append <div> dynamically
+https://stackoverflow.com/questions/14004117/create-div-and-append-div-dynamically
+
+// Your existing code unmodified...
+var iDiv = document.createElement('div');
+iDiv.id = 'block';
+iDiv.className = 'block';
+document.getElementsByTagName('body')[0].appendChild(iDiv);
+
+// Now create and append to iDiv
+var innerDiv = document.createElement('div');
+innerDiv.className = 'block-2';
+
+// The variable iDiv is still good... Just append to it.
+iDiv.appendChild(innerDiv);
+
+====================================================================
+GET LATITUDE AND LONGITUDE
+
+https://www.w3schools.com/html/html5_geolocation.asp
+
+https://stackoverflow.com/questions/17540482/find-latitude-and-longitude-of-current-location
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+====================================================================
+GET WEATHER
+
+http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=2713fa1dcfc190c2f75f4a17d4de741d
+
+BY CITY AND COUNTRY WITH TEMP IN 
+http://api.openweathermap.org/data/2.5/weather?q=Spokane Valley,us&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+http://api.openweathermap.org/data/2.5/weather?q=flagstaff&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+http://api.openweathermap.org/data/2.5/weather?q=Spokane Valley&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+
+BY CITY AND COUNTRY FORECASTS
+http://api.openweathermap.org/data/2.5/forecast/daily?q=Spokane Valley,us&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+
+BY ZIP CODE
+http://samples.openweathermap.org/data/2.5/weather?zip=99216,us&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+http://samples.openweathermap.org/data/2.5/weather?zip=99216&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+http://samples.openweathermap.org/data/2.5/weather?zip=99216&appid=2713fa1dcfc190c2f75f4a17d4de741d&units=imperial
+
+BY LATITUDE AND LONGITUDE
+http://api.openweathermap.org/data/2.5/weather?lat=47.7000703&lon=-117.45167020000001&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+
+BY LATITUDE AND LONGITUDE
+http://api.openweathermap.org/data/2.5/weather?lat=47.678039&lon=-117.232323&units=imperial&appid=2713fa1dcfc190c2f75f4a17d4de741d
+
+47.7000703, -117.45167020000001
+47.678039, -117.232323
+
+====================================================================
+VISIBILITY FORMULAS
+
+Meters to Miles
+1 * 0.0006214 = 0.0006214
+
+====================================================================
+
+TEMPERATURE FORMULAS
+
+Helpers.CelsiusToFahrenheit ° F = (C * 9 / 5) + 32
+Helpers.CelsiusToKelvin       K = C + 273
+Helpers.FahrenheitToCelsius ° C = (F - 32) * 5 / 9
+Helpers.KelvinToCelsius     ° C = K - 273
+Helpers.KelvinToFahrenheit  ° F = 9/5 * (K - 273) + 32
+
+http://openweathermap.org/current#data
+
+====================================================================
+UTC TO DATE
+
+var sunrise = 1495799947;
+var sunset = 1495856020;
+var dateSunrise = new Date(sunrise * 1000);
+var dateSunset = new Date(sunse * 1000);
+
+// Create a new JavaScript Date object based on the timestamp
+// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+var date = new Date(unix_timestamp*1000);
+
+// Hours part from the timestamp
+var hours = date.getHours();
+
+// Minutes part from the timestamp
+var minutes = "0" + date.getMinutes();
+
+// Seconds part from the timestamp
+var seconds = "0" + date.getSeconds();
+
+// Will display time in 10:30:23 format
+var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+====================================================================
+{348}
+
+WIND DIRECTION AND DEGREES
++-----------+------------------+
+| Cardinal  | Degree           |
+| Direction | Direction        |
++-----------+------------------+
+| N         | 348.75 - 11.25   |
+| NNE       | 11.25 - 33.75    |
+| NE        | 33.75 - 56.25    |
+| ENE       | 56.25 - 78.75    |
+| E         | 78.75 - 101.25   |
+| ESE       | 101.25 - 123.75  |
+| SE        | 123.75 - 146.25  |
+| SSE       | 146.25 - 168.75  |
+| S         | 168.75 - 191.25  |
+| SSW       | 191.25 - 213.75  |
+| SW        | 213.75 - 236.25  |
+| WSW       | 236.25 - 258.75  |
+| W         | 258.75 - 281.25  |
+| WNW       | 281.25 - 303.75  |
+| NW        | 303.75 - 326.25  |
+| NNW       | 326.25 - 348.75  |
++-----------+------------------+
