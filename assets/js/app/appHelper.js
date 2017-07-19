@@ -16,7 +16,7 @@
         return (Celsius * 9 / 5) + 32;
     }
 
-    function CelsiusToKelvin(C) {
+    function CelsiusToKelvin(Celsius) {
         return (Celsius + 273.15);
     }
 
@@ -57,7 +57,6 @@
      e.g. 180 degrees equals S
      */
     function WindDegreeToDirection(WindDegree) {
-
         /*
          * How to Convert Wind Directions in Degrees to Compass Directions
          * https://www.campbellsci.com/blog/convert-wind-directions
@@ -84,8 +83,6 @@
     AppHelper.WindDegreeToDirection = WindDegreeToDirection;
     AppHelper.FormatDateToTime = FormatDateToTime;
     AppHelper.MetersToMiles = MetersToMiles;
-
-
     window.AppHelper = AppHelper;
 
     return AppHelper

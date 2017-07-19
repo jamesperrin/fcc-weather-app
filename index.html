@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 Project: FCC Show the Local Weather project
 File Name: index.html
 Date: 06/01/2017
@@ -10,23 +10,24 @@ REF: https://www.freecodecamp.com/challenges/show-the-local-weather
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="James Perrin">
     <meta name="subject" content="Show the Local Weather project">
     <meta name="datecreated" content="20161128">
-    <meta name="datereviewed" content="20170613">
+    <meta name="datereviewed" content="20170718">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FCC Show the Local Weather | Free Code Camp JavaScript Project</title>
 
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/vendor/toastr/css/toastr.min.css" rel="stylesheet" />
-    <link href="assets/css/app.css" rel="stylesheet" />
-    <link href="assets/css/ux-styles.css" rel="stylesheet" />
+    <link type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="assets/vendor/toastr/css/toastr.min.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/ux-styles.css" rel="stylesheet" />
 </head>
 
 <body id="page-top" class="index">
+    <a href="#main-content" class="sr-only">Skip to main content.</a>
     <!--
     ************************************
         HEADER
@@ -45,9 +46,9 @@ REF: https://www.freecodecamp.com/challenges/show-the-local-weather
         MAIN CONTENT
     ************************************
      -->
-    <section id="entryFields" class="">
+    <section id="main-content" class="main-content">
         <div class="container">
-            <form class="form-horizontal col-md-offset-3 col-md-5 ux-test-border-red">
+            <div class="form-horizontal col-md-offset-3 col-md-6">
                 <div class="form-group">
                     <label for="city" class="control-label col-md-3">City:</label>
 
@@ -57,26 +58,21 @@ REF: https://www.freecodecamp.com/challenges/show-the-local-weather
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3">
+                    <div class="text-center">
                         <button class="btn btn-primary" id="GetWeather" title="Get Weather">Get Weather</button>
-
-                        <button class="btn btn-primary" id="GetForecast" title="Get Forecast">Get Forecast</button>
 
                         <button type="reset" class="btn btn-default" title="Reset form">Reset</button>
                     </div>
-            </form>
+                </div>
             </div>
-    </section>
 
-    <section id="main-content" class="">
-        <div class="container">
             <div class="row">
-                <div id="output" class="col-md-6 col-md-offset-3">
-
+                <div class="output-container">
+                    <div id="output-card" class="output-card">
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <!--
@@ -91,21 +87,26 @@ REF: https://www.freecodecamp.com/challenges/show-the-local-weather
                     <hr />
                     <ul class="list-inline">
                         <li>
-                            <a href="https://www.freecodecamp.com/jamesperrin" title="James Perrin's FreeCodeCamp Profile" target="_blank"><i class="fa fa-free-code-camp fa-3x text-primary"></i></a>
+                            <a href="https://www.freecodecamp.com/jamesperrin" title="James Perrin's FreeCodeCamp Profile" target="_blank"><i class="fa fa-free-code-camp fa-3x"></i></a>
                         </li>
                         <li>
-                            <a href="https://github.com/jamesperrin" title="James Perrin's GitHub Profile" target="_blank"><i class="fa fa-github-square fa-3x text-primary"></i></a>
+                            <a href="https://github.com/jamesperrin" title="James Perrin's GitHub Profile" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/jkperrin" title="James Perrin's GitHub Profile" target="_blank"><i class="fa fa-linkedin-square fa-3x text-primary"></i></a>
+                            <a href="https://www.linkedin.com/in/jkperrin" title="James Perrin's GitHub Profile" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
                         </li>
 
                         <li>
-                            <a href="https://twitter.com/_jamesperrin" title="James Perrin's Twitter Profile" target="_blank"><i class="fa fa-twitter-square fa-3x text-primary"></i></a>
+                            <a href="https://twitter.com/_jamesperrin" title="James Perrin's Twitter Profile" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a>
                         </li>
                     </ul>
+
                     <p>
                         Written and Code by: <a href="https://www.countrydawgg.com" title="Countrydawgg IT Solutions" target="_blank">James Perrin</a>
+                    </p>
+
+                    <p>
+                        Background image by <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="http://unsplash.com/@nstudio?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from James Newcombe"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">James Newcombe</span></a>
                     </p>
                 </div>
             </div>
@@ -117,11 +118,17 @@ REF: https://www.freecodecamp.com/challenges/show-the-local-weather
         SCRIPTS
     ************************************
      -->
-    <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/vendor/toastr/toastr.min.js"></script>
-    <script src="assets/js/app/appHelper.js"></script>
-    <script src="assets/js/app/app-jq.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/js/app/appHelper.js"></script>
+
+    <!-- jQuery version -->
+    <!--    <script type="text/javascript" src="assets/js/app/app-jq.js"></script>-->
+
+    <!-- Vanilla JavaScript version -->
+    <script type="text/javascript" src="assets/js/app/app-js.js"></script>
+
 </body>
 
 </html>

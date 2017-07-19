@@ -1,10 +1,14 @@
 /*
+jQuery version
+
 Project: FCC Show the Local Weather
 File Name: app-jq.js
 Date: 06/01/2017
 Programmer: James Perrin
 REF: https://www.freecodecamp.com/challenges/show-the-local-weather
 */
+"use strict";
+
 var dataTest = {
     "coord": {
         "lon": -117.24,
@@ -60,7 +64,6 @@ String.prototype.toProperCase = function () {
 
 // Service to retrieve weather data from OpenWeatherMap.org API
 var ServiceOpenWeatherMap = (function () {
-    "use strict";
 
     function getBeforeSend(xhr) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -71,6 +74,7 @@ var ServiceOpenWeatherMap = (function () {
 
     function getWeatherByCity(city, done, fail) {
         $.ajax({
+            async: false,
             url: "http://api.openweathermap.org/data/2.5/weather",
             beforeSend: getBeforeSend,
             data: {
@@ -85,6 +89,7 @@ var ServiceOpenWeatherMap = (function () {
 
     function getWeatherByGeoCodes(lat, lon, done, fail) {
         $.ajax({
+            async: false,
             url: "http://api.openweathermap.org/data/2.5/weather",
             beforeSend: getBeforeSend,
             data: {
@@ -101,7 +106,7 @@ var ServiceOpenWeatherMap = (function () {
 
     return {
         GetWeatherByCity: getWeatherByCity,
-        GetWeatherByGeoCodes: getWeatherByGeoCodes,
+        GetWeatherByGeoCodes: getWeatherByGeoCodes
     };
 }());
 
@@ -110,7 +115,6 @@ var ServiceOpenWeatherMap = (function () {
 // Ref: http://www.codeproject.com/Articles/819565/Javascript-design-patterns-and-IIFE
 //============================================================================================
 var AppController = (function (svc) {
-    "use strict";
 
     var userData = {
         city: "Spokane",
@@ -120,36 +124,37 @@ var AppController = (function (svc) {
     };
 
     function done(data) {
-        console.log(data);
+        //console.log(data);
 
-        var output = $("#output");
+        var outputContainer = $('#output-container');
+        var output = $('#output-card');
 
-        var outputUL = $('<ul class="list-unstyled">');
+        var dataFront = $('<ul class="data-front">');
+        var dataBack = $('<ul class="data-back">');
 
         var name = typeof data.name === "undefined" ? "" : data.name;
 
         var country = typeof data.sys.country === "undefined" ? "" : ", " + data.sys.country;
 
-        outputUL.append('<li>' + name + country + '</li>');
+        var dataCity = $('<ul class="data-city">');
 
-        var temp = data.main.temp === "undefined" ? "" : "<br />Temp: " + data.main.temp + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp), 2) + "&#176;C";
+        dataFront.append('<li>' + name + country + '</li>');
+
+        if (typeof data.weather !== "undefined") {
+            dataFront.append('<li>' + data.weather[0].description.toProperCase() + '</li>');
+        }
 
         if (data.main.temp !== "undefined") {
-            outputUL.append('<li>' + "Temp: " + data.main.temp + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp), 2) + "&#176;C" +
+            dataFront.append('<li>' + " Temp: " + data.main.temp + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp), 2) + "&#176;C" +
                 '</li>');
         }
 
         if (data.main.temp_max !== "undefined") {
-            outputUL.append('<li>' + "Temp High: " + data.main.temp_max + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp_max), 2) + "&#176;C" + '</li>');
+            dataFront.append('<li>' + "High: " + data.main.temp_max + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp_max), 2) + "&#176;C" + '</li>');
         }
 
         if (data.main.temp_min !== "undefined") {
-            outputUL.append('<li>' + "Temp Low: " + data.main.temp_min + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp_min), 2) + "&#176;C" + '</li>');
-        }
-
-
-        if (typeof data.weather !== "undefined") {
-            outputUL.append('<li>' + "Description: " + data.weather[0].description.toProperCase() + '</li>');
+            dataFront.append('<li>' + "Low: " + data.main.temp_min + "&#176;F" + " / " + AppHelper.Round(AppHelper.FahrenheitToCelsius(data.main.temp_min), 2) + "&#176;C" + '</li>');
         }
 
         var windDirection = typeof data.wind.deg === "undefined" ? "" : AppHelper.WindDegreeToDirection(data.wind.deg);
@@ -157,26 +162,28 @@ var AppController = (function (svc) {
         var wind = typeof data.wind.speed === "undefined" ? "" : " @ " + data.wind.speed + " MPH";
 
         if (typeof windDirection !== "undefined" || typeof wind !== "undefined") {
-            outputUL.append('<li>Wind: ' + windDirection + wind + '</li>');
+            dataBack.append('<li>Wind: ' + windDirection + wind + '</li>');
         }
 
         if (typeof data.main.humidity !== "undefined") {
-            outputUL.append('<li>' + "Humidity: " + data.main.humidity + "%" + '</li>');
+            dataBack.append('<li>' + "Humidity: " + data.main.humidity + "%" + '</li>');
         }
 
         if (typeof data.visibility !== "undefined") {
-            outputUL.append('<li>' + "Visibility: " + AppHelper.Round(AppHelper.MetersToMiles(data.visibility), 2) + " miles" + '</li>');
+            dataBack.append('<li>' + "Visibility: " + AppHelper.Round(AppHelper.MetersToMiles(data.visibility), 2) + " miles" + '</li>');
         }
 
         if (typeof data.sys.sunrise !== "undefined") {
-            outputUL.append('<li>' + "Sunrise: " + AppHelper.FormatDateToTime(AppHelper.UtcTimestampToDate(data.sys.sunrise)) + '</li>');
+            dataBack.append('<li>' + "Sunrise: " + AppHelper.FormatDateToTime(AppHelper.UtcTimestampToDate(data.sys.sunrise)) + '</li>');
         }
 
         if (typeof data.sys.sunset !== "undefined") {
-            outputUL.append('<li>' + "Sunset: " + AppHelper.FormatDateToTime(AppHelper.UtcTimestampToDate(data.sys.sunset)) + '</li>');
+            dataBack.append('<li>' + "Sunset: " + AppHelper.FormatDateToTime(AppHelper.UtcTimestampToDate(data.sys.sunset)) + '</li>');
         }
 
-        output.html(outputUL);
+        output.append(dataFront);
+        output.append(dataBack);
+        outputContainer.html(output);
     }
 
     function fail(xhr, ajaxOptions, thrownError) {
@@ -194,15 +201,21 @@ var AppController = (function (svc) {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     function init() {
         $("#GetWeather").on("click keypress", function (e) {
-            e.preventDefault();
             var city = $("#city").val();
-            //$("#city").val('');
-            // svc.GetWeatherByCity(userData.city + "," + userData.country, done, fail);
-            // svc.GetWeatherByGeoCodes(userData.lat, userData.lon, done, fail);
-            svc.GetWeatherByCity(city, done, fail);
-            //done(dataTest);
+
+            if (city.length > -1) {
+                //svc.GetWeatherByCity(city, done, fail);
+                done(dataTest);
+            } else {
+                toastr["error"]("Please enter a city.");
+            }
         });
-    };
+
+        $("button[type=reset]").on("click keypress", function () {
+            $("#city").val("");
+            $(".output-card").html("");
+        });
+    }
 
     return {
         init: init

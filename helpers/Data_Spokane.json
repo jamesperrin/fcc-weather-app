@@ -4,34 +4,36 @@
         "lat": 47.67
     },
     "weather": [{
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01n"
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
     }],
     "base": "stations",
     "main": {
-        "temp": 79.86, //current temperature
-        "pressure": 1014,
-        "humidity": 21,
-        "temp_min": 77, //min current temperature in the city
-        "temp_max": 82.4 //max current temperature in the city
+        "temp": 55.98,
+        "pressure": 1011,
+        "humidity": 41,
+        "temp_min": 53.6,
+        "temp_max": 60.8
     },
     "visibility": 16093,
     "wind": {
-        "speed": 3.36
+        "speed": 13.87,
+        "deg": 240,
+        "gust": 8.2
     },
     "clouds": {
-        "all": 1
+        "all": 75
     },
-    "dt": 1496797080,
+    "dt": 1497030780,
     "sys": {
         "type": 1,
         "id": 2956,
-        "message": 0.0041,
+        "message": 0.0053,
         "country": "US",
-        "sunrise": 1496836311,
-        "sunset": 1496893464
+        "sunrise": 1497009062,
+        "sunset": 1497066371
     },
     "id": 5811729,
     "name": "Spokane Valley",
