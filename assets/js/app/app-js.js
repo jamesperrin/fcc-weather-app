@@ -90,7 +90,7 @@ var ServiceOpenWeatherMap = (function () {
 
         client.onerror = fail;
 
-        var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + units + "&appid=" + appid;
+        var url = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + units + "&appid=" + appid;
 
         client.open("GET", url);
         client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
