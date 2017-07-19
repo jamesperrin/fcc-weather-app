@@ -90,7 +90,7 @@ var ServiceOpenWeatherMap = (function () {
 
         client.onerror = fail;
 
-        var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + units + "&appid=" + appid;
+        var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + units + "&appid=" + appid;
 
         client.open("GET", url);
         client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -233,9 +233,9 @@ var AppController = (function (svc) {
         var events = "click keypress";
 
         var divGetWeather = document.getElementById("GetWeather");
+
         //divGetWeather.addEventListener("click", GetWeather);
         //divGetWeather.addEventListener("keypress", GetWeather);
-
         events.split(" ").forEach(function (el) {
             divGetWeather.addEventListener(el, GetWeather, false)
         });
@@ -244,9 +244,9 @@ var AppController = (function (svc) {
         inputCity.addEventListener("keydown", InputKeydownEvevnt, false);
 
         var btnReset = document.querySelector("button[type=reset]");
+
         //btnReset.addEventListener("click", ResetPage);
         //btnReset.addEventListener("keypress", ResetPage);
-
         events.split(" ").forEach(function (el) {
             btnReset.addEventListener(el, ResetPage, false)
         });
