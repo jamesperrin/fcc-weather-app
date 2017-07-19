@@ -75,7 +75,7 @@ var ServiceOpenWeatherMap = (function () {
     function getWeatherByCity(city, done, fail) {
         $.ajax({
             async: false,
-            url: "http://api.openweathermap.org/data/2.5/weather",
+            url: "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather",
             beforeSend: getBeforeSend,
             data: {
                 q: city,
